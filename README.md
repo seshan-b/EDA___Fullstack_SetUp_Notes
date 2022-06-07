@@ -7,9 +7,9 @@
 ### Package install
 
 ```sh
+•	npm init # to create package.json
 •	npm install
 •	npm run dev
-•	npm init # to create package.json
 ```
 
 ### Knex Database
