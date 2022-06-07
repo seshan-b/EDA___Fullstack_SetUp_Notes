@@ -8,6 +8,8 @@
 
 ```sh
 •	npm init # to create package.json
+•	npm install express
+•	npm run webpack
 •	npm install
 •	npm run dev
 ```
