@@ -11,3 +11,12 @@
 •	npm run dev
 •	npm init # to create package.json
 ```
+
+### Knex Database
+```sh
+npm install knex sqlite3
+npx knex migrate:make table_name
+npx knex migrate:latest
+npx knex seed:make table_name
+npx knex seed:run
+```
