@@ -8,7 +8,7 @@ function Home () {
 
   return (
     <>
-      <Link to='/page'>Another Page</Link>
+      <Link to='/page'>Single Page</Link>
 
       <div>
         <p>Content</p>

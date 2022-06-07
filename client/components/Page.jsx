@@ -7,7 +7,7 @@ function Page () {
       <Link to='/'>Home Page</Link>
 
       <div>
-        <p>Another Page</p>
+        <p>Single Page</p>
 
       </div>
     </>
