@@ -22,3 +22,7 @@ npx knex migrate:latest
 npx knex seed:make table_name
 npx knex seed:run
 ```
+
+#
+## Client
+1. Components
