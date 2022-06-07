@@ -57,4 +57,22 @@ function App() {
 export default App
 ```
 
-### 2. Index.js
+### 2. Index
+#### `index.js`
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { HashRouter as Router } from 'react-router-dom'
+
+import App from './components/App'
+
+document.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(
+    <Router>
+      <App />
+    </Router>,
+    document.getElementById('app')
+  )
+})
+
+```
