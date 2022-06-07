@@ -26,4 +26,4 @@ npx knex seed:run
 #
 ## Client
 ### 1. Components
-#### `App.jsx` | `ListOfThings.jsx` | `SingleThing.jsx`
+#### `App.jsx` | `ListOfItems.jsx` | `SingleItem.jsx`
