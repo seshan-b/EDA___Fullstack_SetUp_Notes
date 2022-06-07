@@ -8,8 +8,8 @@
 
 ```sh
 •	npm init # to create package.json
-•	npm install express
-•	npm run webpack
+•	npm install express 
+•	npm run webpack 
 •	npm install
 •	npm run dev
 ```
@@ -25,4 +25,5 @@ npx knex seed:run
 
 #
 ## Client
-1. Components
+### 1. Components
+#### `App.jsx` | `ListOfThings.jsx` | `SingleThing.jsx`
