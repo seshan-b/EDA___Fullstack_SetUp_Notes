@@ -236,3 +236,29 @@ function getCommentById(commentId, db = connection) {
 }
 
 ```
+
+### .insert()
+.then() ---- .then is the promise /response u getting back from the request
+```js
+function addPost(post, db = connection) {
+    return db('Posts')
+        .insert(
+            {
+                title: post.title,
+                date_created: new Date(Date.now()),
+                comment_count: 0,
+                paragraphs: JSON.stringify(post.paragraphs)
+            }
+        )
+        .then(() => {
+            return {
+                id: post.id,
+                title: post.title,
+                date_created: post.date_created,
+                comment_count: post.comment_count,
+                paragraphs: JSON.stringify(post.paragraphs)
+            }
+        }
+        )
+}
+```
