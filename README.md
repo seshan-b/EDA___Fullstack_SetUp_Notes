@@ -289,3 +289,100 @@ function deteleComment(commentId, db = connection){
 ---
 
 ## Routes
+* GET   //  to read database
+```js
+
+router.get('/:postId/comments', (req, res) => {
+  const postId = Number(req.params.postId)
+
+  db.getComments(postId)
+  .then((comments)=> {
+    return res.json(comments)
+  })
+  .catch((err) => console.error(err))
+})
+
+```
+
+* POST  // to add thing to database
+
+```js
+
+router.post('/:postId/comments', (req, res) => {
+  const postId = Number(req.params.postId)
+  const { comments } = req.body
+
+  db.postComment(postId, comments)
+    .then((comment) => {
+      return res.json(comment)
+    })
+    .catch((err) => console.error(err))
+})
+
+```
+
+* PATCH    //  to update piece of database
+* PUT   // to update entire database or piece of data
+```js
+
+router.patch('/:id', (req, res) => {
+
+  const id = Number(req.params.id)
+
+  const { title, paragraphs } = req.body
+
+  const updatedPost = {
+    title: title,
+    paragraphs: paragraphs
+  }
+
+  db.updatePost(id, updatedPost)
+  .then(() => {
+    return db.getPostById(id)
+  })
+    .then((post) => {
+      res.json(post)
+      return null
+    })
+    .catch((err) => console.error(err))
+})
+
+```
+
+* DELETE to delete database
+```
+
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id)
+    
+  db.deletePost(id)
+  .then(()=> {
+    return res.sendStatus(204)
+  })
+  .catch((err) => console.error(err))
+})
+
+```
+
+---
+
+
+###  Public
+`index.html`
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="/main.css" rel="stylesheet">
+  <title>React and web APIs!</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script src="/bundle.js"></script>
+</body>
+</html>
+
+```
