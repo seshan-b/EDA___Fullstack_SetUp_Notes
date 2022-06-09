@@ -207,32 +207,34 @@ const config = require('./knexfile').development
 const connection = require('knex')(config)
 
 module.exports = {
-    eachFuntions
+  doSomethingById,
+  getCommentById
+
 }
 
-function doSomethingById(elementID, db = connection){
+function doSomethingById (postId, db = connection) {
   return db('table_Name')
-  .select()
-  .then( ()=> { return db('')})
-  .insert()
-  .where('post_id', postId)
-  .update()
-  .first()
+    .select()
+    .then(() => { return db('') })
+    .insert()
+    .where('post_id', postId)
+    .update()
+    .first()
 }
 
-.where('name_in_column', alia)
-.select('what we select')
+// .where('name_in_column', alia)
+// .select('what we select')
 
-function getCommentById(commentId, db = connection) {
-    return db('Comments')
-        .where('id', commentId)
-        .select(
-            'id',
-            'post_id as postId',
-            'date_posted as datePosted',
-            'comment',      
-        )
-        .first()
+function getCommentById (commentId, db = connection) {
+  return db('Comments')
+    .where('id', commentId)
+    .select(
+      'id',
+      'post_id as postId',
+      'date_posted as datePosted',
+      'comment'
+    )
+    .first()
 }
 
 ```
@@ -279,11 +281,11 @@ function updateComment(commentId, updatedComment, db = connection) {
 
 ### .delete()
 ```js
-function deteleComment(commentId, db = connection){
-    return db('comments')
+function deleteComment (commentId, db = connection) {
+  return db('comments')
     .where('id', commentId)
     .delete()
-}   
+} 
 ```
 
 ---
@@ -368,7 +370,7 @@ router.delete('/:id', (req, res) => {
 
 
 ###  Public
-`index.html`
+#### `index.html`
 
 ```
 <!DOCTYPE html>
@@ -386,3 +388,61 @@ router.delete('/:id', (req, res) => {
 </html>
 
 ```
+#### `main.css`
+
+#### `images`
+All images go here
+
+
+#### `index.js`
+```
+
+const server = require('./server')
+server.on('unhandledRejection', console.log.bind(console))
+
+
+const port = process.env.PORT || 3000
+
+server.listen(port, () => {
+  // eslint-disable-next-line no-console
+  console.log('Server is listening on port', port)
+})
+
+```
+
+`Bundle.js`
+The minified Javascript goes into this file. This file is create and updated automatically.
+
+
+`Server.js`
+```
+const path = require('path')
+const express = require('express')
+
+const widgets = require('./routes/widgets')
+
+const server = express()
+server.use(express.json())
+server.use(express.static(path.join(__dirname, 'public')))
+
+server.use('/api/v1/widgets', widgets)
+
+module.exports = server
+
+```
+
+#### `package.json`
+All the external package information goes here so you can run ***npm install*** on another environment and get all the node_modules
+
+---
+
+## Testing
+
+
+Testing routes with SuperTest
+* Separate your server from making it listen
+* server.js contains the server config and the routes
+* index.js imports the server and makes it listen
+* npm install jest supertest -D
+* touch server.test.js
+* Test routes 🚀
