@@ -238,8 +238,9 @@ function getCommentById(commentId, db = connection) {
 ```
 
 ### .insert()
-.then() ---- .then is the promise /response u getting back from the request
+
 ```js
+// .then() ----> .then is the promise /response u getting back from the request
 function addPost(post, db = connection) {
     return db('Posts')
         .insert(
@@ -262,3 +263,29 @@ function addPost(post, db = connection) {
         )
 }
 ```
+
+### .update()
+```js
+function updateComment(commentId, updatedComment, db = connection) {
+    return db('comments')
+        .where('id', commentId)
+        .update({
+            post_id: updatedComment.postId,
+            comment: updatedComment.comment
+        })
+}
+
+```
+
+### .delete()
+```js
+function deteleComment(commentId, db = connection){
+    return db('comments')
+    .where('id', commentId)
+    .delete()
+}   
+```
+
+---
+
+## Routes
