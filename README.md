@@ -183,3 +183,56 @@ npm run knex seed:make table_name
 npm run knex seed:run
 
 ```
+
+---
+
+## Server
+#### `server.js`
+```js
+const path = require('path')
+const express = require('express')
+
+const server = express()
+
+server.use(express.static(path.join(__dirname, 'public')))
+
+module.exports = server
+```
+
+###  Db folder for function 
+#### `db.js`
+
+```js
+const config = require('./knexfile').development
+const connection = require('knex')(config)
+
+module.exports = {
+    eachFuntions
+}
+
+function doSomethingById(elementID, db = connection){
+  return db('table_Name')
+  .select()
+  .then( ()=> { return db('')})
+  .insert()
+  .where('post_id', postId)
+  .update()
+  .first()
+}
+
+.where('name_in_column', alia)
+.select('what we select')
+
+function getCommentById(commentId, db = connection) {
+    return db('Comments')
+        .where('id', commentId)
+        .select(
+            'id',
+            'post_id as postId',
+            'date_posted as datePosted',
+            'comment',      
+        )
+        .first()
+}
+
+```
