@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema.createTable('films', function (table) {
+  return knex.schema.createTable('table_name', function (table) {
     table.increments('id').primary()
     table.string('name')
     table.integer('userId').references('user.id')
@@ -7,5 +7,5 @@ exports.up = function (knex) {
 }
 
 exports.down = function (knex) {
-  return knex.schema.dropTable('films')
+  return knex.schema.dropTable('table_name')
 }
