@@ -1,4 +1,4 @@
-#Notes to Full stack JS App
+# Notes to Full stack JS App
 
 ## A full stack boilerplate for JS Apps
 
@@ -22,11 +22,11 @@ npx knex seed:make table_name
 npx knex seed:run
 ```
 
-#
+--- 
 
 ## Client
 
-### 1. Components
+### 1. Components Folder
 
 #### `App.jsx` | `ListOfItems.jsx` | `SingleItem.jsx`
 
@@ -57,7 +57,7 @@ function App() {
 export default App
 ```
 
-### 2. Index
+### 2. Index File
 #### `index.js`
 ```js
 import React from 'react'
@@ -74,5 +74,54 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('app')
   )
 })
+
+```
+
+### 3. Webpack Config File
+#### `Webpack.config.js`
+```js
+const path = require('path')
+
+module.exports = {
+  mode: 'development',
+  entry: path.join(__dirname, 'index.js'),
+  output: {
+    path: path.join(__dirname, '../server/public'),
+    filename: 'bundle.js'
+  },
+  module: {
+    rules: [{
+      test: /\.jsx?$/,
+      loader: 'babel-loader',
+      exclude: /node_modules/
+    }]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  devtool: 'source-map'
+}
+
+```
+
+---
+## Rest API
+### 1. API Folder
+#### `Api.js`
+```js
+import request from 'superagent'
+
+const serverURL = '/api/v1'
+
+export function getSomething () {
+  return request
+    .get(`${serverURL}/welcome`)
+    .then(res => {
+      return res.body
+    })
+    .catch(err => {
+      console.error('ERROR:', err.message)
+    })
+}
 
 ```
