@@ -125,3 +125,33 @@ export function getSomething () {
 }
 
 ```
+
+--- 
+## Database
+### Knex Database
+#### 1. Run these commands
+```ssh 
+  npm run knex init
+```
+This will create a file in ***server/db/knexfile.js***
+
+#### 2. `knexfile.js`
+
+```js
+module.exports = {
+  development: {
+    client: 'sqlite3',
+    connection: {
+      filename: './dev.sqlite3'
+    },
+    useNullAsDefault: true
+  },
+  test: {
+    client: 'sqlite3',
+    connection: {
+      filename: ':memory:'
+    },
+    useNullAsDefault: true
+  }
+}
+```
