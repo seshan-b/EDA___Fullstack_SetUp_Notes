@@ -129,8 +129,8 @@ export function getSomething () {
 --- 
 ## Database
 ### Knex Database
-#### 1. Run these commands
-```ssh 
+#### 1. Run this command
+```sh 
   npm run knex init
 ```
 This will create a file in ***server/db/knexfile.js***
@@ -154,4 +154,32 @@ module.exports = {
     useNullAsDefault: true
   }
 }
+```
+#### 3. Run this command
+```sh 
+  npm run knex migrate:make table_name
+```
+* create schema at migrations folder
+ #### `20220609154933_table_name.js`
+```js
+exports.up = function (knex) {
+  return knex.schema.createTable('films', function (table) {
+    table.increments('id').primary()
+    table.string('name')
+     table.integer( 'userId' ).references( 'user.id' );
+  })
+}
+``` 
+
+```sh
+
+#1 Check and run the latest migration
+npm run knex migrate:latest
+
+#2 Make a table
+npm run knex seed:make table_name
+
+#3 Run seed data
+npm run knex seed:run
+
 ```
