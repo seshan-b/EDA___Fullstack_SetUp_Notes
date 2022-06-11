@@ -1,6 +1,6 @@
-# Notes to Full stack JS App
+# Notes to Full stack JS App 
 
-## A full stack boilerplate for JS Apps
+## A full stack boilerplate for JS Apps. This is an Enspiral Dev Academy Template
 
 ### Package install
 
